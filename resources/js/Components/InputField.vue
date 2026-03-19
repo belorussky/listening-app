@@ -1,16 +1,13 @@
 <script setup lang="ts">
-const model = defineModel();
-const props = defineProps({
-    label: String,
-    icon: String,
-    placeholder: {
-        type: String,
-        default: "",
-    },
-    type: {
-        type: String,
-        default: "text",
-    },
+const model = defineModel<string>();
+const props = withDefaults(defineProps<{
+    label?: string;
+    icon?: string;
+    placeholder?: string;
+    type?: string;
+}>(), {
+    placeholder: '',
+    type: 'text',
 });
 </script>
 

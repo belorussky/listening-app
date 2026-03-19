@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { route } from '../../../vendor/tightenco/ziggy';
 
-const props = defineProps<{
+interface IProps {
     routeName: string;
     componentName?: string;
-}>();
+}
+
+const props = defineProps<IProps>();
 </script>
 
 <template>
