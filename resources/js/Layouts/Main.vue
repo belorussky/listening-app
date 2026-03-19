@@ -3,6 +3,7 @@ import { switchTheme } from '../theme';
 import NavLink from '../Components/NavLink.vue';
 import { usePage } from "@inertiajs/vue3";
 import { computed, ref } from "vue";
+import { route } from "../../../vendor/tightenco/ziggy";
 
 interface User {
     id: number;
