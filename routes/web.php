@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ListingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 
@@ -15,6 +15,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/', [ListingController::class, 'index'])->name('home');
+Route::resource('listing', ListingController::class)->except('index');
 
-Route::inertia('/', 'Home')->name('home');
 require __DIR__ . '/auth.php';
