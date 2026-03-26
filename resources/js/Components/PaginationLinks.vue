@@ -1,10 +1,12 @@
 
-<script setup>
-defineProps({
-    paginator: Object,
-});
+<script setup lang="ts">
+import type { Paginator } from "../types/listing";
 
-const makeLabel = (label) => {
+defineProps<{
+    paginator: Paginator;
+}>();
+
+const makeLabel = (label: string): string => {
   if (label.includes("Previous")) {
     return "<<";
   } else if (label.includes("Next")) {
