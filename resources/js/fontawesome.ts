@@ -10,7 +10,13 @@ import {
     faAngleDown,
     faTriangleExclamation,
     faMagnifyingGlass,
-    faXmark
+    faXmark,
+    faHeading,
+    faTags,
+    faNewspaper,
+    faUpRightFromSquare,
+    faUser,
+    faRotateLeft
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -21,7 +27,13 @@ library.add(
     faAngleDown,
     faTriangleExclamation,
     faMagnifyingGlass,
-    faXmark
+    faXmark,
+    faHeading,
+    faTags,
+    faNewspaper,
+    faUpRightFromSquare,
+    faUser,
+    faRotateLeft
 )
 
 export { FontAwesomeIcon }

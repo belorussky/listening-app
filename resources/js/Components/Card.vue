@@ -32,7 +32,7 @@ const selectTag = (tag: string): void => {
     >
         <div>
             <!-- Image -->
-            <Link href="">
+            <Link :href="route('listing.show', listing.id)">
                 <img
                     :src="
                         listing.image
