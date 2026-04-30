@@ -9,6 +9,7 @@ interface User {
     id: number;
     name: string;
     email: string;
+    role: string;
 }
 
 interface PageProps {
@@ -31,7 +32,7 @@ const show = ref<boolean>(false);
 
             <div class="flex items-center space-x-6">
                 <!-------------- Auth -------------->
-                <div v-if="user" class="relative">
+                <div v-if="user" class="relative flex items-center gap-4">
                     <div
                         @click="show = !show"
                         class="flex items-center gap-2 px-3 py-1 rounded-lg hover:bg-slate-700 cursor-pointer"
@@ -40,6 +41,14 @@ const show = ref<boolean>(false);
                         <p>{{ user.name }}</p>
                         <Fa :icon="['fas', 'fa-angle-down']" />
                     </div>
+
+                    <Link
+                        v-if="user.role === 'admin'"
+                        :href="route('admin.index')"
+                        class="hover:bg-slate-700 w-6 h-6 grid place-items-center rounded-full hover:outline outline-1 outline-white"
+                    >
+                        <Fa :icon="['fas', 'fa-lock']" />
+                    </Link>
 
                     <!-------------- User dropdown menu -------------->
                     <div

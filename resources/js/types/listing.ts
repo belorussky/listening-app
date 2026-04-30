@@ -1,6 +1,7 @@
 export interface User {
     id: number;
     name: string;
+    role: string;
 }
 
 export interface Listing {
@@ -31,6 +32,15 @@ export interface Paginator {
 
 export interface PaginatedListings extends Paginator {
     data: Listing[];
+}
+
+export interface AdminUser extends User {
+    email: string;
+    listings: Listing[];
+}
+
+export interface PaginatedAdminUsers extends Paginator {
+    data: AdminUser[];
 }
 
 export interface RouteParams {

@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 // solid
 import {
     faCircleHalfStroke,
+    faCircleCheck,
+    faCircleXmark,
     faIdBadge,
     faAt,
     faKey,
@@ -16,11 +18,14 @@ import {
     faNewspaper,
     faUpRightFromSquare,
     faUser,
-    faRotateLeft
+    faRotateLeft,
+    faLock
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
     faCircleHalfStroke,
+    faCircleCheck,
+    faCircleXmark,
     faIdBadge,
     faAt,
     faKey,
@@ -33,7 +38,8 @@ library.add(
     faNewspaper,
     faUpRightFromSquare,
     faUser,
-    faRotateLeft
+    faRotateLeft,
+    faLock
 )
 
 export { FontAwesomeIcon }

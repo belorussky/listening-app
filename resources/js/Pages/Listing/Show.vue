@@ -1,24 +1,57 @@
 <script setup lang="ts">
-import { router } from "@inertiajs/vue3";
+import { computed } from "vue";
+import { router, usePage } from "@inertiajs/vue3";
 import Container from "../../Components/Container.vue";
 import { route } from '../../../../vendor/tightenco/ziggy';
 import type { Listing, User } from '../../types/listing';
 
+interface PageProps {
+    auth: { user: User | null };
+    [key: string]: unknown;
+}
+
 const props = defineProps<{
     listing: Listing;
     user: User;
-    canModify: Boolean;
+    canModify: boolean;
 }>();
 
-const deleteListing = () => {
+const page = usePage<PageProps>();
+const isAdmin = computed(() => page.props.auth.user?.role === 'admin');
+
+const deleteListing = (): void => {
     if (confirm("Are you sure?")) {
         router.delete(route("listing.destroy", props.listing.id));
+    }
+};
+
+const toggleApprove = (): void => {
+    const msg = props.listing.approved
+        ? "Disapprove this listing?"
+        : "Approve this listing?";
+
+    if (confirm(msg)) {
+        router.put(route("admin.approve", props.listing.id));
     }
 };
 </script>
 
 <template>
     <Head title="- Listing Detail" />
+
+    <!-- Admin -->
+    <div
+        v-if="isAdmin"
+        class="bg-slate-800 text-white mb-6 p-6 rounded-md font-medium flex items-center justify-between"
+    >
+        <p>
+            This listing is {{ listing.approved ? "Approved" : "Disapproved" }}.
+        </p>
+        <button @click.prevent="toggleApprove" class="bg-slate-600 px-3 py-1 rounded-md">
+            {{ listing.approved ? 'Disapprove it' : 'Approve it' }}
+        </button>
+    </div>
+
     <Container class="flex gap-4">
         <div class="w-1/4 rounded-md overflow-hidden">
             <img
